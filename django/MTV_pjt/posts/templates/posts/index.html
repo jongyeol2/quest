@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <h1>ㅎㅇ 인덱스페이지야</h1>
+    <a href="{% url "posts:post_list" %}">
+        <button>전체글 조회로 가기</button>
+    </a>
+{% endblock content %}

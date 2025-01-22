@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">게시글 전체 조회</h1>
+
+        {% if request.user.is_authenticated %}
+            <a href="{% url "posts:post_create" %}" class="create-btn">
+                <button>새로운 글 작성</button>
+            </a>
+        {% else %}
+            <a href="{% url "users:login" %}" class="login-btn">
+                로그인하고 글 작성하기
+            </a>
+        {% endif %}
+
+        <div class="posts-list">
+            {% for post in posts %}
+                <a href="{% url 'posts:post_detail' post.pk %}" class="post-card">
+                    <div class="post-card-body">
+                        <div class="post-info">
+                            <p class="post-title">{{ post.title }}</p>
+                            <div class="post-meta">
+                                <span class="post-author">{{ post.author.username }}</span>
+                                <span class="post-date">{{ post.created_at|date:"Y-m-d H:i" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+

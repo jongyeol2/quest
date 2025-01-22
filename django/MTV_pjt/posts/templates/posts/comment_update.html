@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="comment-update">
+    <h1>댓글 수정</h1>
+    <p>게시글: <strong>{{ post.title }}</strong></p>
+
+    <form action="{% url 'posts:comment_update' post.pk comment.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">수정완료</button>
+    </form>
+
+    <a href="{% url 'posts:post_detail' post.pk %}" class="btn btn-secondary">돌아가기</a>
+</div>
+{% endblock content %}

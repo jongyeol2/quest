@@ -1,0 +1,828 @@
+/* 전반적인 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh; /* 페이지가 항상 화면을 꽉 채우도록 설정 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    background-color: #333; /* 어두운 회색 계열 */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .home-btn { /* 홈 버튼에 대한 스타일 */
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .home-btn:hover {
+    background-color: #555; /* 조금 더 밝은 회색으로 hover */
+    transform: scale(1.1);
+}
+
+.navbar .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-right a,
+.navbar .navbar-right button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin-left: 15px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .navbar-right a:hover,
+.navbar .navbar-right button:hover {
+    background-color: #555; /* hover 시 밝은 회색으로 */
+    transform: scale(1.1);
+}
+
+.navbar .user-greeting {
+    color: white;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 로그인/회원가입 버튼 */
+.login-btn, .signup-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background-color: #2980b9;
+}
+
+/* 화면 컨텐츠 */
+.container {
+    padding: 20px;
+    flex: 1; /* 컨텐츠가 남은 공간을 차지하도록 */
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #333; /* 네비바와 동일한 색상 */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* 푸터가 항상 페이지 하단에 위치하도록 설정 */
+}
+
+footer .footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* 모바일 친화적인 디자인 */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .navbar-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    footer {
+        padding: 15px;
+    }
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+a {
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.user-greeting {
+    display: inline-flex; /* 수평으로 배치되도록 설정 */
+    align-items: center; /* 이미지와 텍스트 수직 정렬 */
+}
+
+
+
+
+/* 기본 컨테이너 스타일 */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 글쓰기 버튼 */
+.create-btn button {
+    background-color: #28a745;
+}
+
+.create-btn button:hover {
+    background-color: #218838;
+}
+
+/* 로그인 버튼 */
+.login-btn button {
+    background-color: #ffc107;
+}
+
+.login-btn button:hover {
+    background-color: #e0a800;
+}
+
+/* 게시글 리스트 스타일 */
+.posts-list {
+    margin-top: 30px;
+}
+
+/* 게시글 카드 스타일 */
+.post-card {
+    display: block;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 게시글 내용 */
+.post-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 가운데 정렬 */
+}
+
+/* 게시글 제목 스타일 */
+.post-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 게시글 작성자 및 날짜 */
+.post-meta {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 작성자 이름 스타일 */
+.post-author {
+    margin-right: 10px;
+}
+
+/* 게시글 작성 날짜 스타일 */
+.post-date {
+    font-style: italic;
+}
+
+/* 카드 호버 효과 */
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 작은 화면에서도 잘 보이게 */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
+
+
+
+/* -------------------------------------------------------
+/* 게시글 상세보기 스타일 */
+.post-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.post-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.post-author {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.post-dates {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.post-image img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-actions {
+    margin-top: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px;
+}
+
+/* 목록 보기 버튼 스타일 */
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* 수정하기 버튼 스타일 */
+.btn.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* 삭제 버튼 스타일 */
+.btn.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* 삭제 폼 스타일 */
+.delete-form input[type='submit'] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-form input[type='submit']:hover {
+    background-color: #c82333;
+}
+
+
+/* 게시글 생성 페이지 스타일 */
+.post-create {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-create h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+/* 글쓰기 버튼 스타일 */
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* 목록 보기 버튼 스타일 */
+.btn.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* 게시글 수정 페이지 스타일 */
+.post-edit {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-edit h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+/* 수정 완료 버튼 스타일 */
+.btn.btn-primary {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.btn.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* 이전으로 버튼 스타일 */
+.btn.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* 로그인 페이지 스타일 */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 회원가입 링크 스타일 */
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* 회원가입 페이지 스타일 */
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.signup-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn.btn-primary {
+    background-color: #28a745;
+    color: white;
+    width: 100%;
+}
+
+.btn.btn-primary:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* 회원가입 폼 링크 */
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+
+.post-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.post-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.post-author {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.post-content {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-dates p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.post-actions .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.comments-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-form {
+    margin-bottom: 20px;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.comment-content {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.comment-actions .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.no-comments {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+
+/* 버튼 기본 스타일 */
+.btn {
+    padding: 10px 20px; /* 버튼 패딩 */
+    font-size: 1rem; /* 버튼 텍스트 크기 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 5px; /* 버튼들 간의 간격을 일정하게 */
+}
+
+/* 목록 보기 버튼 스타일 */
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* 수정하기 버튼 스타일 */
+.btn.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* 삭제 버튼 스타일 */
+.btn.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* 작은 버튼 스타일 (수정 및 삭제 버튼) */
+.btn-sm {
+    padding: 5px 10px; /* 작은 버튼은 더 작은 패딩 */
+    font-size: 0.875rem; /* 작은 텍스트 크기 */
+}
+
+/* 버튼을 모두 동일하게 크기 조정 */
+.post-actions .btn {
+    min-width: 120px; /* 버튼의 최소 너비를 동일하게 설정 */
+    text-align: center;
+    display: inline-block;
+}
+
+
