@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="chat-container">
+        <h1 class="chat-title">챗봇</h1>
+
+        <div class="chat-box">
+            <form method="POST" class="chat-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="chat-submit-btn">전송</button>
+            </form>
+        </div>
+
+        {% if ai_response %}
+            <div class="chat-response">
+                <h2>AI의 응답:</h2>
+                <p>{{ ai_response }}</p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="chat-error">
+                <h2>에러:</h2>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}
+
+{% block extra_css %}
+    <style>
+        /* 전체 배경과 컨테이너 스타일 */
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 챗봇 제목 */
+        .chat-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* 입력 폼 영역 */
+        .chat-box {
+            margin-bottom: 20px;
+        }
+
+        .chat-form p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        /* 전송 버튼 */
+        .chat-submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* AI 응답 영역 */
+        .chat-response {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6ffe6;
+            border: 1px solid #4CAF50;
+            border-radius: 6px;
+        }
+
+        .chat-response h2 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .chat-response p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* 에러 메시지 영역 */
+        .chat-error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffe6e6;
+            border: 1px solid #ff4d4d;
+            border-radius: 6px;
+        }
+
+        .chat-error h2 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #ff4d4d;
+        }
+
+        .chat-error p {
+            font-size: 1rem;
+            color: #ff4d4d;
+        }
+    </style>
+{% endblock extra_css %}

@@ -25,6 +25,7 @@ urlpatterns = [
     path("index/", views.index, name="index"),
     path("users/", include("users.urls")),
     path("posts/", include("posts.urls")),
+    path("chatbot/", include("chatbot.urls")),
 ]
 
 if settings.DEBUG:
