@@ -12,7 +12,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 프롬프트 명령
-prompt = "You are a very scary computer teacher"
+prompt = "You are a tour guide in Korea."
 
 @login_required
 def chat(request):
@@ -48,7 +48,7 @@ def chat(request):
             chat_history = Chatbot.objects.filter(author=request.user).order_by("-created_at")
             chatbot_instance.save()
             
-            character = prompt.replace("You are a ", "")
+            character = prompt.replace("You are ", "I am ")
             
             context = {
                 "form": form,
@@ -60,7 +60,7 @@ def chat(request):
     else:
         form = ChatbotForm()
         chat_history = Chatbot.objects.filter(author=request.user).order_by("-created_at")
-        character = prompt.replace("You are a ", "")
+        character = prompt.replace("You are ", "I am ")
         context = {
             "form": form,
             "chat_history": chat_history,
