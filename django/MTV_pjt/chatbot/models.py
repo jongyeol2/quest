@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Chatbot(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="chat_log")
-    user_input = models.TextField()
+    user_input = models.CharField(max_length=200)
     ai_response = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
